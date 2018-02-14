@@ -42,6 +42,15 @@ public class UserInfoController {
 	public @ResponseBody Map<String, Object> join(@RequestBody UserInfoVO ui){
 		Map<String, Object> map = new HashMap<String, Object>();
 		log.info("insertUI=>{}",ui);
+		map.put("msg", "회원가입 실패!");
+		map.put("biz", false);
+		int result = uis.join(ui);
+		if(result==1) {
+			map.put("msg", "회원가입 성공!!");
+			map.put("biz", true);
+		}else if(result==2) {
+			map.put("msg", "아이디 중복되었습니다.");
+		}
 		return map;
 	}
 	

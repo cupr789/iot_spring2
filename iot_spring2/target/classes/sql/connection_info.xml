@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="con">
+  <select id="selectConnectionInfo" parameterType="con"  resultType="con">
+  	select
+  	ciNo,ciName,ciUrl,ciPort,ciDatabase,ciUser,ciPwd,ciEtc,uiId, ciNo as id, ciName as text, uiId
+  	from connection_info where uiId=#{uiId}
+  </select>
+
+   <select id="selectConnectionInfoWithCiNo" parameterType="con"  resultType="con">
+  	select
+  	ciNo,ciName,ciUrl,ciPort,ciDatabase,ciUser,ciPwd,ciEtc,uiId, ciNo as id, ciName as text, uiId
+  	from connection_info where ciNo=#{ciNo}
+  </select>
+
+
+<!--   <insert id="insertConnectionInfo" parameterType="con">
+  	insert into connection_info(ciName,ciUrl,ciPort,ciDatabase,ciUser,ciPwd,uiId,ciEtc,uiId) 
+  	values(#{ciName},#{ciUrl},#{ciPort},#{ciDatabase},#{ciUser},#{ciPwd},#{uiId},#{ciEtc},#{uiId})
+  </insert>-->
+  
+	<select id="selectDatabase"  resultType="map">
+	show databases
+  	</select> 
+  	
+  	
+<!--   	<select id="selectTable"  resultType="tvo" parameterType="string">
+  	select table_name as tableName, table_comment as tableComment,(data_length+index_length)/1024 as tableSize 
+  	from information_schema.tables
+	where table_schema=#{dbName}
+	and (table_type='BASE TABLE' or table_type='SYSTEM VIEW');
+  	</select> -->
+  	
+  <!--	
+  	<select id="selectColumn"  resultType="cvo" parameterType="string">
+	select column_name as columnName, column_default as columnDefault,
+	is_nullable as isNullAble,data_type as dataType,character_maximum_length as characterMaximumLength,
+	column_type as columnType,column_key as columnKey,column_comment as columnComment 
+	from information_schema.columns
+	where table_schema=database()
+	and table_name=#{tableName}
+	order by ordinal_position;
+  	</select> -->
+
+  </mapper>

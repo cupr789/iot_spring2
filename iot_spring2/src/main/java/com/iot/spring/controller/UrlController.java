@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/path")
 public class UrlController {
 	private static final Logger log = LoggerFactory.getLogger(UrlController.class);
 	
@@ -18,13 +17,19 @@ public class UrlController {
 		return url.replace(rootPath+"/path", "");
 	}
 	
-	@RequestMapping("/**")
+	@RequestMapping("/path/**")
 	public ModelAndView goJsp(HttpServletRequest req,ModelAndView mav) {
 		String url = req.getRequestURI();
 		String rootPath = req.getContextPath();
 		url = getUrl(url, rootPath);
 		log.info("path =>{}",url);
 		mav.setViewName(url); 
+		return mav;
+	}
+	
+	@RequestMapping("/")
+	public ModelAndView goIndex(ModelAndView mav) {
+		mav.setViewName("index");
 		return mav;
 	}
 }

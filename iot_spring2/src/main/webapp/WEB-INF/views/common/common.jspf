@@ -4,7 +4,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-out.println(${root});
 <c:set var="ver" value="?version=1.0.0"/>
 <c:set var="rPath" value="${root}/resources"/>
 <c:set var="pPath" value="${root}/path"/>
@@ -14,8 +13,12 @@ out.println(${root});
 <link rel="stylesheet" type="text/css" href="${dPath}/dhtmlx.css${ver}"/>
 <link rel="stylesheet" type="text/css" href="${rPath}/css/common.css${ver}"/>
 <script src="${rPath}/js/jquery-3.2.1.js${ver}" charset="utf-8"></script>
-<script src="${rPath}/js/common.js${ver}"></script>
 <script src="${dPath}/dhtmlx.js${ver}" charset="utf-8"></script>
+<script src="${rPath}/js/common.js${ver}"></script>
+
+<script type="text/javascript" charset="utf-8">
+   window.alert = dhtmlx.alert;
+</script>
 
 <!-- Chrome, Safari, IE -->
 <link rel="shortcut icon" href="${rPath}/imgs/favicon.png">

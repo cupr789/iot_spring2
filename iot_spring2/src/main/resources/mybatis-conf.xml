@@ -12,15 +12,15 @@
 <typeAliases>
 <!-- 	<typeAlias alias="emp" type="com.iot.spring.vo.Emp"/> -->
 	<typeAlias alias="ui" type="com.iot.spring.vo.UserInfoVO"/>
-<!-- 	<typeAlias alias="con" type="com.iot.spring.vo.ConnectionInfoVO"/>
+ 	<typeAlias alias="con" type="com.iot.spring.vo.ConnectionInfoVO"/>
 	<typeAlias alias="tvo" type="com.iot.spring.vo.TableVO"/>
-	<typeAlias alias="cvo" type="com.iot.spring.vo.ColumnVO"/> -->
+<!--	<typeAlias alias="cvo" type="com.iot.spring.vo.ColumnVO"/> -->
 </typeAliases>
 
 
 	<mappers>
 		<mapper resource="sql/user_info.xml"/>
-<!-- 		<mapper resource="sql/emp.xml"/>
-		<mapper resource="sql/connection_info.xml"/> -->
+		<!-- <mapper resource="sql/emp.xml"/> -->
+		<mapper resource="sql/connection_info.xml"/> 
 	</mappers>
 </configuration>

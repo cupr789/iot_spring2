@@ -24,7 +24,7 @@
       popW.button("close").hide();
       popW.button("minmax").hide();
       popW.button("park").hide();
-      popW.setText("Login"); 
+      popW.setText("Join"); 
 
       winF.window("win1").centerOnScreen();
       winF.window("win1").denyMove();
@@ -35,11 +35,13 @@
                {type:"input",name:"uiId", label:"사용자 Id : ",required:true},
                {type:"password",name:"uiPwd", label:"사용자 Pwd : ",required:true},
                {type:"input",name:"uiEmail", label:"Email : ",required:true},
-               {type:"radio",name:"admin", label:"관리자 권한 : ",checked:"0", list:[
-            	   {type: "radio",name: "admin", value:"0", label:"예", checked: true},
-            	   {type: "radio",name: "admin", value:"1", label:"아니오"}
+               {type:"label",name:"admin", label:"관리자 권한 : ", list:[
+            	   {type: "radio",name: "admin", value:"1", label:"예", checked: true},
+            	   {type: "radio",name: "admin", value:"0", label:"아니오"}
             	   ]},
                {type: "block", blockOffset: 0, list: [
+            	  {type: "button", name:"checkBtn",value: "아이디 중복체크"},
+                  {type: "newcolumn"},
                   {type: "button", name:"joinBtn",value: "회원가입"},
                   {type: "newcolumn"},
                   {type: "button", name:"cancelBtn",value: "취소"},
@@ -59,14 +61,22 @@
             form.clear();
          }else if(id=="backBtn"){
         	 location.href="${pPath}/user/login";
+         }else if(id=="checkBtn"){
+        	 var uiId = form.getItemValue("uiId");
+        	/*  var aud = new AjaxUtil("${root}/user/check/"+uiId,null,"get");
+        	 aud.send(callback); */
          }
       });
 
    });
    
-   function callback(loader, res){
-	  console.log(res);
+   function callback(res){
+		alert(res.msg);
+		if(res.biz){
+			location.href="${pPath}/user/login"
+		}
    }
+   
 
 </script>
 <body>

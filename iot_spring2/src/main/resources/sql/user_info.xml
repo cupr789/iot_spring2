@@ -14,6 +14,12 @@
   		and uiPwd=#{uiPwd}
   	</if>
   </select>
+  
+  
+  <insert id="insertUserInfo" parameterType="ui">
+  	insert into user_info(uiName, uiId, uiPwd, uiEmail, admin) 
+  	values(#{uiName},#{uiId},#{uiPwd},#{uiEmail},#{admin});
+  </insert>
 
   
    

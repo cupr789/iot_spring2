@@ -174,3 +174,19 @@ function returnSession(result){
 	alert("설정되었습니다.");
 	pageMove(url);
 }
+
+
+/*
+ * dhtmlx 커스터 마이징
+ */
+dhtmlXCellObject.prototype.hideAll = function(){
+   this.button("close").hide();
+   this.button("minmax").hide();
+   this.button("park").hide();
+}
+
+dhtmlXWindows.prototype.center = function(){
+   this.window("win1").centerOnScreen();
+   this.window("win1").denyMove();
+   this.window("win1").denyResize();
+}
